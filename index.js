@@ -31,7 +31,7 @@ app.post('/register', function (req, res) {
         return res.json({message:"请填写完整信息",code:-1});
     }else {
 
-        var  register = 'insert into user(username,password,phone,address,getGoodsName) values("王刚insert into user(username,password,phone,address,getGoodsName) values("高高", "123456", 13581835556, "北京市高碑店","高高")';
+        var  register = 'insert into user(username,password,phone,address,getGoodsName) values("高高", "123456", 13581835556, "北京市高碑店","高高1")';
         connection.query(register,function (err, result) {
             if(err){
                 console.log('[SELECT ERROR] - ',err.message);
