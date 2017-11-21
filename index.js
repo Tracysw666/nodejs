@@ -33,8 +33,11 @@ app.get('/getCosmeticsList', function (req, res) {
 
 /**获取化妆品详情**/
 app.get('/getCosmeticsDetail', function (req, res) {
-    var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where proid=1';
-console.log(url.parse(req.url, true).query.id);
+    var proId = url.parse(req.url, true).query.proid;
+    if(!proId){
+        return false;
+    }
+    var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where proid='+proId;
     connection.query(cosmeticsDetailTable,function (err, result) {
         if(err){
             console.log('[SELECT ERROR] - ',err.message);
