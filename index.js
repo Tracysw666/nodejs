@@ -24,6 +24,23 @@ connection.connect();
 /**注册**/
 app.post('/register', function (req, res) {
     console.log(req.body);
+    var userList = req.body;
+
+
+    if(!userList.username||!userList.password||!userList.phone||!userList.address||!userList.getGoodsName){
+        return res.json({message:"请填写完整信息",code:-1});
+    }else {
+
+        var  register = 'insert into user(username,password,phone,address,getGoodsName) values("王刚insert into user(username,password,phone,address,getGoodsName) values("高高", "123456", 13581835556, "北京市高碑店","高高");
+        connection.query(register,function (err, result) {
+            if(err){
+                console.log('[SELECT ERROR] - ',err.message);
+                return;
+            }
+            res.json(result);
+        });
+
+    }
 
     ////化妆品的table
     //var  cosmeticsListTable = 'SELECT * FROM cosmetics';
