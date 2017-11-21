@@ -30,7 +30,7 @@ app.get('/getCosmeticsList', function (req, res) {
 /**获取化妆品详情**/
 app.get('/getCosmeticsDetail', function (req, res) {
     console.log(req);
-    var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where id=1';
+    var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where proid=1';
 
     connection.query(cosmeticsDetailTable,function (err, result) {
         if(err){
