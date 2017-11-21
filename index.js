@@ -53,9 +53,12 @@ app.post('/login', function (req, res) {
                 return;
             }
 
+            console.log("密码是1"+result.password)
+            console.log("密码是2"+loginList.password)
+
             if(result.password == loginList.password) {
                 delete result.password;
-                //res.json({code: 0,data:result, message: "登录成功"});
+                res.json({code: 0,data:result, message: "登录成功"});
             }else {
                 res.json({code: -1, message: "密码错误,请检查账户或密码是否填写正确"});
 
