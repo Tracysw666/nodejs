@@ -34,7 +34,7 @@ app.get('/getCosmeticsList', function (req, res) {
 /**获取化妆品详情**/
 app.get('/getCosmeticsDetail', function (req, res) {
     var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where proid=1';
-console.log(url.parse(req.url, true).query);
+console.log(url.parse(req.url, true).query.id);
     connection.query(cosmeticsDetailTable,function (err, result) {
         if(err){
             console.log('[SELECT ERROR] - ',err.message);
