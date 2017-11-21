@@ -53,7 +53,7 @@ app.post('/login', function (req, res) {
                 return;
             }
 
-            console.log("密码是1"+result.password)
+            console.log("密码是1"+result)
             console.log("密码是2"+loginList.password)
 
             if(result.password == loginList.password) {
