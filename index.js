@@ -23,7 +23,31 @@ connection.connect();
 
 
 /**登录**/
+app.post('/login', function (req, res) {
+    console.log(req.body);
+    var loginList = req.body;
+    if(!loginList.username||!loginList.password){
+        return res.json({message:"请填写完整信息",code:-1});
+    }else {
+        var  login = 'SELECT * FROM user where username='+loginList.username;
+        connection.query(login,function (err, result) {
+            if(err){
+                console.log('[SELECT ERROR] - ',err.message);
+                return;
+            }
+            var result = result;
 
+            if(result.password == loginList.password) {
+                delete result.password;
+                res.json({code: 0,data:result, message: "登录成功"});
+            }else {
+                res.json({code: -1, message: "密码错误,请检查账户或密码是否填写正确"});
+
+            }
+        });
+
+    }
+});
 
 
 /**注册**/
@@ -51,7 +75,7 @@ app.post('/register', function (req, res) {
                 console.log('[SELECT ERROR] - ',err.message);
                 return;
             }
-            res.json({code:0,message:"z" +"注册成功"});
+            res.json({code:0,message:"注册成功"});
         });
 
     }
