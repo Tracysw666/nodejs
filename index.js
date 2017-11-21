@@ -20,15 +20,15 @@ connection.connect();
 app.post('/register', function (req, res) {
     console.log(req.body);
 
-    //化妆品的table
-    var  cosmeticsListTable = 'SELECT * FROM cosmetics';
-    connection.query(cosmeticsTable,function (err, result) {
-        if(err){
-            console.log('[SELECT ERROR] - ',err.message);
-            return;
-        }
-        res.json(result);
-    });
+    ////化妆品的table
+    //var  cosmeticsListTable = 'SELECT * FROM cosmetics';
+    //connection.query(cosmeticsTable,function (err, result) {
+    //    if(err){
+    //        console.log('[SELECT ERROR] - ',err.message);
+    //        return;
+    //    }
+    //    res.json(result);
+    //});
 });
 
 
