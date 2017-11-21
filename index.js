@@ -32,7 +32,7 @@ app.post('/register', function (req, res) {
     }else {
 
         var  register = 'insert into user(username,password,phone,address,getGoodsName) values'+"("+userList.username+","+userList.password+","+userList.phone+","+userList.address+","+userList.getGoodsName+")";
-        
+    console.log(register);
         connection.query(register,function (err, result) {
             if(err){
                 console.log('[SELECT ERROR] - ',err.message);
