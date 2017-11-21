@@ -22,6 +22,21 @@ var connection = mysql.createConnection({
 connection.connect();
 
 
+//加双引号的方法  (员数组,需要加的键名)
+function addQuotes(list,needaddQuotesList){
+    for(li in list){
+        for(var i = 0;i<needaddQuotesList.length;i++){
+            if(li == needaddQuotesList[i]){
+                list[li] = '"'+list[li]+'"';
+            }
+        }
+
+    }
+    return list;
+
+}
+
+
 /**登录**/
 app.post('/login', function (req, res) {
     console.log(req.body);
@@ -29,6 +44,7 @@ app.post('/login', function (req, res) {
     if(!loginList.username||!loginList.password){
         return res.json({message:"请填写完整信息",code:-1});
     }else {
+        loginList = addQuotes(loginList,['username']);
         var  login = 'SELECT * FROM user where username='+loginList.username;
         connection.query(login,function (err, result) {
             if(err){
@@ -61,12 +77,9 @@ app.post('/register', function (req, res) {
     if(!userList.username||!userList.password||!userList.phone||!userList.address||!userList.getGoodsName){
         return res.json({message:"请填写完整信息",code:-1});
     }else {
+       userList = addQuotes(userList,['username','password','address',getGoodsName])
+        //
 
-        for(li in userList){
-            if(li =="username" || li =="password"  ||li =="address" || li=="getGoodsName"){
-                userList[li] = '"'+userList[li]+'"';
-            }
-        }
 
         var  register = 'insert into user(username,password,phone,address,getGoodsName) values'+"("+userList.username+","+userList.password+","+userList.phone+","+userList.address+","+userList.getGoodsName+")";
     console.log(register)
