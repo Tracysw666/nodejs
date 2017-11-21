@@ -59,7 +59,9 @@ app.post('/login', function (req, res) {
                 console.log('[SELECT ERROR] - ',err.message);
                 return;
             }
-            var result = result[0];
+            console.log(result);
+
+            //var result = result[0];
             console.log(result.username);
             console.log("密码是2"+loginList.password);
 
