@@ -9,6 +9,8 @@ var queryString  = require("querystring");
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 
 var connection = mysql.createConnection({
     host     : '60.205.218.42',
