@@ -44,7 +44,7 @@ app.post('/login', function (req, res) {
     if(!loginList.username||!loginList.password){
         return res.json({message:"请填写完整信息",code:-1});
     }else {
-        //loginList = addQuotes(loginList,['username']);
+        loginList = addQuotes(loginList,['username']);
         var  login = 'SELECT * FROM user where username='+loginList.username;
         console.log(login);
         connection.query(login,function (err, result) {
