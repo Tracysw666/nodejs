@@ -32,7 +32,7 @@ app.get('/getCosmeticsDetail', function (req, res) {
     console.log(req);
     var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where id=1';
 
-    connection.query(getCosmeticsDetail,function (err, result) {
+    connection.query(cosmeticsDetailTable,function (err, result) {
         if(err){
             console.log('[SELECT ERROR] - ',err.message);
             return;
