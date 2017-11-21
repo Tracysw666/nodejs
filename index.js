@@ -35,6 +35,8 @@ app.get('/getCosmeticsList', function (req, res) {
 app.get('/getCosmeticsDetail', function (req, res) {
     var proId = url.parse(req.url, true).query.proid;
     if(!proId){
+        res.json({message:"请输入id"});
+
         return false;
     }
     var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where proid='+proId;
