@@ -52,7 +52,7 @@ app.post('/login', function (req, res) {
                 console.log('[SELECT ERROR] - ',err.message);
                 return;
             }
-            console.log("密码是1"+result.username);
+            console.log(result);
             console.log("密码是2"+loginList.password);
 
             if(result.password == loginList.password) {
