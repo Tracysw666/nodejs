@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-
+//
 
 /**获取化妆品列表**/
 app.get('/getCosmeticsList', function (req, res) {
