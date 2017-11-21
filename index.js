@@ -62,10 +62,10 @@ app.post('/login', function (req, res) {
             console.log(result[0]);
 
             //var result = result[0];
-            console.log(result[0].username);
+            var re = result[0];
             console.log("密码是2"+loginList.password);
 
-            if(result.password == loginList.password) {
+            if(re.password == loginList.password) {
                 //设置cookie
                 res.cookie('login', new Date(Date.now() + 900000), { expires: new Date(Date.now() + 900000), httpOnly: true });
                 delete result.password;
