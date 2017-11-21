@@ -86,9 +86,6 @@ app.post('/logout', function (req, res) {
 
 
 
-
-
-
 /**注册**/
 app.post('/register', function (req, res) {
     console.log(req.body);
@@ -97,14 +94,14 @@ app.post('/register', function (req, res) {
 
 
 
-    if(!userList.username||!userList.password||!userList.phone||!userList.address||!userList.getGoodsName){
+    if(!userList.username||!userList.email||!userList.password||!userList.phone||!userList.address||!userList.getGoodsName){
         return res.json({message:"请填写完整信息",code:-1});
     }else {
-       userList = addQuotes(userList,['username','password','address',getGoodsName])
+       userList = addQuotes(userList,['username','email','password','address','getGoodsName'])
         //
 
 
-        var  register = 'insert into user(username,password,phone,address,getGoodsName) values'+"("+userList.username+","+userList.password+","+userList.phone+","+userList.address+","+userList.getGoodsName+")";
+        var  register = 'insert into user(username,email,password,phone,address,getGoodsName) values'+"("+userList.username+","+userList.email+","+userList.password+","+userList.phone+","+userList.address+","+userList.getGoodsName+")";
     console.log(register)
         connection.query(register,function (err, result) {
             if(err){
