@@ -81,6 +81,7 @@ app.post('/login', function (req, res) {
 app.post('/logout', function (req, res) {
     console.log(req.body);
     res.clearCookie("login");
+    res.json({code: 0,data:result, message: "注销成功"});
 });
 
 
