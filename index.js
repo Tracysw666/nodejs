@@ -62,7 +62,7 @@ app.post('/login', function (req, res) {
             console.log(result[0]);
 
             //var result = result[0];
-            console.log(result.username);
+            console.log(result[0].username);
             console.log("密码是2"+loginList.password);
 
             if(result.password == loginList.password) {
