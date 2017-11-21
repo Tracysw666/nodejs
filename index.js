@@ -46,6 +46,7 @@ app.post('/login', function (req, res) {
     }else {
         loginList = addQuotes(loginList,['username']);
         var  login = 'SELECT * FROM user where username='+loginList.username;
+        console.log(login);
         connection.query(login,function (err, result) {
             if(err){
                 console.log('[SELECT ERROR] - ',err.message);
