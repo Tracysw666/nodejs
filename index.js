@@ -7,6 +7,9 @@ var mysql      = require('mysql');
 var url = require("url");
 var queryString  = require("querystring");
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 var connection = mysql.createConnection({
     host     : '60.205.218.42',
     user     : 'root',
@@ -18,7 +21,7 @@ connection.connect();
 
 /**注册**/
 app.post('/register', function (req, res) {
-    console.log(req);
+    console.log(req.body);
 
     ////化妆品的table
     //var  cosmeticsListTable = 'SELECT * FROM cosmetics';
