@@ -21,6 +21,11 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
+
+/**登录**/
+
+
+
 /**注册**/
 app.post('/register', function (req, res) {
     console.log(req.body);
@@ -33,6 +38,11 @@ app.post('/register', function (req, res) {
         return res.json({message:"请填写完整信息",code:-1});
     }else {
 
+        for(li in userList){
+            if(li =="username" || li =="password"  ||li =="address" || li=="getGoodsName"){
+                userList[li] = '"'+userList[li]+'"';
+            }
+        }
 
         var  register = 'insert into user(username,password,phone,address,getGoodsName) values'+"("+'"'+userList.username+'"'+","+'"'+userList.password+'"'+","+userList.phone+","+'"'+userList.address+'"'+","+'"'+userList.getGoodsName+'"'+")";
     console.log(register)
@@ -41,20 +51,10 @@ app.post('/register', function (req, res) {
                 console.log('[SELECT ERROR] - ',err.message);
                 return;
             }
-            res.json(result);
+            res.json({code:0,message:"z" +"注册成功"});
         });
 
     }
-
-    ////化妆品的table
-    //var  cosmeticsListTable = 'SELECT * FROM cosmetics';
-    //connection.query(cosmeticsTable,function (err, result) {
-    //    if(err){
-    //        console.log('[SELECT ERROR] - ',err.message);
-    //        return;
-    //    }
-    //    res.json(result);
-    //});
 });
 
 
