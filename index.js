@@ -16,7 +16,21 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-//
+/**注册**/
+app.post('/register', function (req, res) {
+    console.log(req.body);
+
+    //化妆品的table
+    var  cosmeticsListTable = 'SELECT * FROM cosmetics';
+    connection.query(cosmeticsTable,function (err, result) {
+        if(err){
+            console.log('[SELECT ERROR] - ',err.message);
+            return;
+        }
+        res.json(result);
+    });
+});
+
 
 /**获取化妆品列表**/
 app.get('/getCosmeticsList', function (req, res) {
