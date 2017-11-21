@@ -12,6 +12,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
+//cookie
+var cookie = require('cookie-parser');
+
+
+
+
+
 var connection = mysql.createConnection({
     host     : '60.205.218.42',
     user     : 'root',
@@ -57,6 +64,8 @@ app.post('/login', function (req, res) {
             console.log("密码是2"+loginList.password);
 
             if(result.password == loginList.password) {
+                //设置cookie
+                res.cookie('login', new Date(Date.now() + 900000), { expires: new Date(Date.now() + 900000), httpOnly: true });
                 delete result.password;
                 res.json({code: 0,data:result, message: "登录成功"});
             }else {
@@ -67,6 +76,16 @@ app.post('/login', function (req, res) {
 
     }
 });
+
+/**注销**/
+app.post('/logout', function (req, res) {
+    console.log(req.body);
+    res.clearCookie("login");
+});
+
+
+
+
 
 
 /**注册**/
