@@ -18,7 +18,7 @@ connection.connect();
 
 /**注册**/
 app.post('/register', function (req, res) {
-    console.log(req.body);
+    console.log(req);
 
     ////化妆品的table
     //var  cosmeticsListTable = 'SELECT * FROM cosmetics';
