@@ -17,7 +17,7 @@ connection.connect();
 /**获取化妆品列表**/
 app.get('/getCosmeticsList', function (req, res) {
     //化妆品的table
-    var  cosmeticsTable = 'SELECT * FROM cosmetics';
+    var  cosmeticsListTable = 'SELECT * FROM cosmetics';
     connection.query(cosmeticsTable,function (err, result) {
         if(err){
             console.log('[SELECT ERROR] - ',err.message);
@@ -29,7 +29,8 @@ app.get('/getCosmeticsList', function (req, res) {
 
 /**获取化妆品详情**/
 app.get('/getCosmeticsDetail', function (req, res) {
-    var  cosmeticsTable = 'SELECT * FROM cosmetics';
+    console.log(req);
+    var  cosmeticsDetailTable = 'SELECT * FROM cosmetics where id=1';
 
     connection.query(cosmeticsTable,function (err, result) {
         if(err){
