@@ -69,7 +69,7 @@ app.post('/login', function (req, res) {
                 //设置cookie
                 res.cookie('login', new Date(Date.now() + 9000000), { expires: new Date(Date.now() + 900000000), httpOnly: false });
                 delete result.password;
-                res.json({code: 0,data:result, message: "登录成功"});
+                res.json({code: 0,data:result[0], message: "登录成功"});
             }else {
                 res.json({code: -1, message: "密码错误,请检查账户或密码是否填写正确"});
 
