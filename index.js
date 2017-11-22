@@ -173,7 +173,7 @@ app.get('/searchCosmeticsDetail', function (req, res) {
         res.json({message:"请输入筛选内容"});
         return false;
     }
-    var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics where proname LIKE'+"%%"+proname+"%%";
+    var  searchCosmeticsDetailTable = 'SELECT * FROM [cosmetics] where proname LIKE'+"%%"+proname+"%%";
 
 
     connection.query(searchCosmeticsDetailTable,function (err, result) {
