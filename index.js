@@ -24,7 +24,8 @@ var connection = mysql.createConnection({
     user     : 'root',
     password : '123456',
     database : 'ysw',
-    charset:    'UTF8'
+    charset:    'UTF8',
+
 });
 
 connection.connect();
@@ -190,7 +191,7 @@ app.get('/searchCosmeticsDetail', function (req, res) {
 });
 
 
-var server = app.listen(8721, function () {
+var server = app.listen(8720, function () {
     var host = server.address().address
     var port = server.address().port
     console.log("应用实例，访问地址为 http://%s:%s", host, port)
