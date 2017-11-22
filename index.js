@@ -149,7 +149,7 @@ app.get('/getCosmeticsList', function (req, res) {
     });
 });
 
-/**获取化妆品详情**/
+/**获取化妆品详情 根据id**/
 app.get('/getCosmeticsDetail', function (req, res) {
     var proId = url.parse(req.url, true).query.proid;
     if(!proId){
@@ -163,6 +163,24 @@ app.get('/getCosmeticsDetail', function (req, res) {
             console.log('[SELECT ERROR] - ',err.message);
             return;
         }
+    });
+});
+
+/**获取化妆品详情 根据名字**/
+app.get('/searchCosmeticsDetail', function (req, res) {
+    var proname = url.parse(req.url, true).query.proname;
+    if(!proname){
+        res.json({message:"请输入筛选内容"});
+        return false;
+    }
+    var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics where proname='+proname;
+    connection.query(searchCosmeticsDetailTable,function (err, result) {
+        if(err){
+            console.log('[SELECT ERROR] - ',err.message);
+            return;
+        }
+        res.json({code:0,data:result,message:"查询成功"});
+
     });
 });
 
