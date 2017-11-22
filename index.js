@@ -173,8 +173,9 @@ app.get('/searchCosmeticsDetail', function (req, res) {
         res.json({message:"请输入筛选内容"});
         return false;
     }
-    proname = '"'+proname+'"';
-    var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics where proname='+proname;
+    var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics where proname LIKE'+"%%"+proname+"%%";
+
+
     connection.query(searchCosmeticsDetailTable,function (err, result) {
         if(err){
             console.log('[SELECT ERROR] - ',err.message);
