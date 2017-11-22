@@ -67,7 +67,7 @@ app.post('/login', function (req, res) {
 
             if(re.password == loginList.password) {
                 //设置cookie
-                res.cookie('login', new Date(Date.now() + 9000000), { expires: new Date(Date.now() + 900000000), httpOnly: true });
+                res.cookie('login', new Date(Date.now() + 9000000), { expires: new Date(Date.now() + 900000000), httpOnly: false });
                 delete result.password;
                 res.json({code: 0,data:result, message: "登录成功"});
             }else {
