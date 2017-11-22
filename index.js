@@ -175,7 +175,7 @@ app.get('/searchCosmeticsDetail', function (req, res) {
         res.json({message:"请输入筛选内容"});
         return false;
     }
-    var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics WHERE proname LIKE'+"'"+"%"+proname+"%"+"'";
+    var  searchCosmeticsDetailTable = "select * from cosmetics where proname like '%极%'";
 
     //var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics WHERE locate(proname,'+"'"+proname+"'"+") > 0";
 
