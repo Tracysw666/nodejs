@@ -93,14 +93,24 @@ app.post('/register', function (req, res) {
     console.log(req.body);
     var userList = req.body;
 
-
-
-
     if(!userList.username||!userList.email||!userList.password||!userList.phone||!userList.address||!userList.getGoodsName){
         return res.json({message:"请填写完整信息",code:-1});
     }else {
+
+        //首先根据username查重
+        var  repeat = 'SELECT * FROM user where username='+userList.username;
+        connection.query(repeat,function (err, result) {
+            if(err){
+                console.log('[SELECT ERROR] - ',err.message);
+                return;
+            }
+           return res.json({code:-1,message:"用户名已注册,请登录或更换其他用户名"});
+        });
+
+
+
        userList = addQuotes(userList,['username','email','password','address','getGoodsName'])
-        //
+
 
 
         var  register = 'insert into user(username,email,password,phone,address,getGoodsName) values'+"("+userList.username+","+userList.email+","+userList.password+","+userList.phone+","+userList.address+","+userList.getGoodsName+")";
@@ -144,6 +154,8 @@ app.get('/getCosmeticsDetail', function (req, res) {
             console.log('[SELECT ERROR] - ',err.message);
             return;
         }
+        console.log(result);
+        console.log(result.length);
         res.json(result);
     });
 });
