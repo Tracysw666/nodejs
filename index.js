@@ -23,7 +23,8 @@ var connection = mysql.createConnection({
     host     : '60.205.218.42',
     user     : 'root',
     password : '123456',
-    database : 'ysw'
+    database : 'ysw',
+    charset:    'UTF8'
 });
 
 connection.connect();
@@ -173,9 +174,8 @@ app.get('/searchCosmeticsDetail', function (req, res) {
         res.json({message:"请输入筛选内容"});
         return false;
     }
-    var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics WHERE locate(proname,'+"'"+proname+"'"+") > 0";
-
-
+    var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics WHERE proname LIKE'+"'"+"%"+proname+"%"+"'";
+    //var  searchCosmeticsDetailTable = 'SELECT * FROM cosmetics WHERE locate(proname,'+"'"+proname+"'"+") > 0";
 
     console.log(searchCosmeticsDetailTable);
     connection.query(searchCosmeticsDetailTable,function (err, result) {
