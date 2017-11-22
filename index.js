@@ -25,7 +25,6 @@ var connection = mysql.createConnection({
     password : '123456',
     database : 'ysw',
     charset:   'LATIN1',
-    debug:true,
 
 });
 
