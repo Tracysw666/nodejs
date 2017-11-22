@@ -93,6 +93,8 @@ app.post('/register', function (req, res) {
     console.log(req.body);
     var userList = req.body;
 
+    var isReapt = false;
+
     if(!userList.username||!userList.email||!userList.password||!userList.phone||!userList.address||!userList.getGoodsName){
         return res.json({message:"请填写完整信息",code:-1});
     }else {
@@ -104,8 +106,13 @@ app.post('/register', function (req, res) {
                 console.log('[SELECT ERROR] - ',err.message);
                 return;
             }
-           return res.json({code:-1,message:"用户名已注册,请登录或更换其他用户名"});
+            if(result.length>0){
+                isReapt = true;
+                return res.json({code:-1,message:"用户名已注册,请登录或更换其他用户名"});
+            }
         });
+
+         if(isReapt===true) return false;
 
 
 
@@ -154,9 +161,6 @@ app.get('/getCosmeticsDetail', function (req, res) {
             console.log('[SELECT ERROR] - ',err.message);
             return;
         }
-        console.log(result);
-        console.log(result.length);
-        res.json(result);
     });
 });
 
