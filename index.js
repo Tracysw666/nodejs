@@ -106,7 +106,9 @@ app.post('/register', function (req, res) {
                 console.log('[SELECT ERROR] - ',err.message);
                 return;
             }
+            console.log(result);
             if(result.length>0){
+                console.log("的确是重复了");
                 isReapt = true;
                 return res.json({code:-1,message:"用户名已注册,请登录或更换其他用户名"});
             }
